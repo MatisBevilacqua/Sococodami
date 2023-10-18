@@ -1,0 +1,51 @@
+footer{
+    position: sticky;
+    bottom: 0;
+}
+
+a{
+    color: black;
+}
+
+main{
+    gap: 50px;
+}
+
+.container__afq{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.container__hello{
+    height: 10vh;
+    padding: 0 0 0 4%;
+    font-size: 20px;
+    align-self: self-start;
+}
+
+.container__recent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recent{
+    display: flex;
+    flex-direction: column;
+    background-color: #041026;;
+    width: 89vw;
+    padding: 2vh 1vw 2vh 1vw;
+    color: white;
+}
+
+.container__img{
+    width: 90%;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vh;
+    background-image: url('https://thumbs.dreamstime.com/b/fond-de-timbre-poste-du-monde-18420119.jpg');
+}

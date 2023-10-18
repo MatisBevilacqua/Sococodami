@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
+{% endblock %}
+
+{% block body %}
+<form class="form" method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <h1 class="form__title">Connection</h1>
+    <label for="inputUsername">Pseudo</label>
+    <input class="form__input" placeholder="Pseudo" type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Mot de passe</label>
+    <input class="form__input" placeholder="Mot de passe" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <button class="form__button" type="submit">
+        Valider
+    </button>
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connectez en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconecter</a>
+        </div>
+    {% endif %}
+
+</form>
+{% endblock %}

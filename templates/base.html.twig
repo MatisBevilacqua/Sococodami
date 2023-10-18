@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+                <nav class="nav-mobile-main">
+                    <img class="logo" src={{ asset('images/logo_soco_2.gif') }}>
+                    <div class="modal-nav-mobile">
+                        <ul>
+                            <li><a href="/">Accueil</a></li>
+                            <li><a id="active-redirect" href="">A propos de nous</a></li>
+                            <li><a href="/news">Actualités</a></li>
+                            {% if app.user %}
+                                <li><a id="active-redirect" href="/stamps">Espaces timbres</a></li>
+                                <li><a href="/forum">Forum</a></li>
+                            {% endif %}
+                            <li><a href="/login">Espace privé</a></li>
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="/add/news">Ajoutez des actualités</a></li>
+                                <li><a href="/add/stamps">Ajoutez des timbres</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="nav-mobile">
+                        <div class="row-nav-mobile"></div>
+                        <div class="row-nav-mobile"></div>
+                        <div class="row-nav-mobile"></div>
+                    </div>
+                </nav>
+
+                <nav class="nav-laptop">
+                    <img class="logo" src={{ asset('images/logo_soco_2.gif') }}>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/about">A propos de nous</a></li>
+                        <li><a href="/news">Actualités</a></li>
+                        <li><a href="/login">Espace privé</a></li>
+                        {% if app.user %}
+                            <li><a href="/stamps">Espaces timbres</a></li>
+                            <li><a href="/forum">Forum</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="/add/news">Ajoutez des actualités</a></li>
+                            <li><a href="/add/stamps">Ajoutez des timbres</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </header>
+
+        {% block body %}
+
+        {% endblock %}
+
+        <footer>
+            <h2>SO.CO.CO.DA.MI.</h2>
+            <p>©2023. All Rights Reserved.</p>
+        </footer>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0" nonce="KlwkQWQM"></script>
+        <script src="{{ asset('js/base.js') }}"></script>
+    </body>
+</html>

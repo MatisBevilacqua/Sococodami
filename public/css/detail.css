@@ -1,0 +1,91 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.stamp-list{
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stamp{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+p{
+    text-align: center;
+}
+
+.stamps__img{
+    width: 120px;
+    margin: 5vh;
+}
+
+.stamp{
+    gap: 10px;
+    background-color: #041026;
+    color: white;
+    padding: 2vh 1vw 2vh 1vw;
+}
+
+.stamp__hidden{
+    display: flex;
+    padding: 2vh 0 0 0 ;
+    gap: 20px;
+    flex-direction: column;
+}
+
+#forum{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label{
+    display: none;
+}
+
+
+input{
+    height: 30px;
+}
+
+button{
+    width: 20vw;
+    height: 30px;
+}
+
+input, textarea{
+    width: 20vw;
+}
+
+.forum__txt{
+    margin: 10vw 0 0 0;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.forum__response{
+    width: 90vw;
+    font-size: 18px;
+    background-color: #041026;
+    margin: 5vw;
+    color: white;
+    padding: 5vh 2vw 5vh 2vw;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nbr__comment{
+    align-self: flex-end;
+}

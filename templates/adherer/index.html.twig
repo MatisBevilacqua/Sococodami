@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adherer
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/other.css') }}"/>
+{% endblock %}
+
+
+{% block body %}
+	<main>
+		<h1 class='title__ohter'>Adhésion</h1>
+
+		<p class='txt__other'>Les nouveaux adhérents doivent être présentés par deux sociétaires ou par le président d’une association fédérée. Les parrains qui prennent la responsabilité de la présentation doivent signer le bulletin d’adhésion ou à défaut joindre un courrier ou courriel au secrétaire.
+																		Le montant des droits d’entrée et de la cotisation annuelle sont fixés, chaque année, par l’Assemblée Générale.
+																		Avantages réservés aux adhérents :
+		</p>
+
+		<ul>
+			<li>Participation aux activités du Service des Echanges (Offres sur Listes)</li>
+
+			<li>Fourniture gratuite des suppléments et bulletins</li>
+
+			<li>Accès au site privé avec le détail des tirages des timbres de France récents associés à un forum de discussion</li>
+
+		</ul>
+
+		<img src="{{ asset('/images/' ~ 'ad.jpeg') }}" alt="Image du timbre">
+
+        <a href="mailto:jean-claude.gagne@wanadoo.fr">Des questions ? Contacter nous ici !</a>
+	
+    </main>
+{% endblock %}

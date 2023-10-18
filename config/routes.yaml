@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+app_stamp_detail:
+    path: '/stamps/detail/{id}'
+    controller: App\Controller\DetailController::index
+
+stamp_upload:
+    path: /upload
+    controller: App\Controller\StampController::upload
+
+

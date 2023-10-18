@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/forum.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+	<main>
+		<h1 class="news__title">Questions récentes</h1>
+
+		<ul class="forum">
+			{% for comment in comments %}
+				<li class='forum__response'>
+					<p>{{ comment.date|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }} | {{ comment.user }}</p>
+					<p></p>
+					<p>{{ comment.Title }}</p>
+					<p>{{ comment.content }}</p>
+				</li>
+
+			{% endfor %}
+		</ul>
+	</main>
+{% endblock %}

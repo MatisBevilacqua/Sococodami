@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/stamps.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1 class="tamps__title">Espace timbre</h1>
+		{% block content %}
+			{{ form_start(form) }}
+			{{ form_row(form.submit) }}
+			{{ form_end(form) }}
+
+			<div class="filtered-stamps">
+				{% if filteredStamps is not empty %}
+					<div class="stamp-list">
+						{% for stamp in filteredStamps %}
+							<div class="stamp">
+								<p>
+									<strong>Date Parution:</strong>
+									<a id="link__id" href="{{ path('app_stamp_detail', {'id': stamp.getId()}) }}">{{ stamp.getDateParution() }}
+										|
+										{{ stamp.getTitre()}}
+									</a>
+								</p>
+							</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p>Aucun timbre trouvé.</p>
+				{% endif %}
+			</div>
+		</main>
+	{% endblock %}
+	<script src="{{ asset('js/stamp.js') }}"></script>
+{% endblock %}

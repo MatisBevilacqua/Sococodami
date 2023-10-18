@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/news.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <main>
+        <h1 class="news__title">Actualités</h1>
+
+        <div class="news__container">
+            {% if actualites is not empty %}
+                {% for actualite in actualites %}
+                    <article class="news__item">
+                        <li class="item__list">
+                            {% if actualite.image %}
+                                <img class="image__news" src="{{ asset('/images/news/' ~ actualite.image) }}" alt="{{ actualite.title }}">
+                            {% endif %}
+                            <h2>{{ actualite.title }}</h2>
+                            <p>{{ actualite.content }}</p>
+                            <p>Date: {{ actualite.date|date('Y-m-d H:i:s') }}</p>
+                            {% if actualite.link %}
+                                <a href={{ actualite.link }}>{{ actualite.link }}</a>
+                            {% endif %}
+                        </li>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>Aucune actualité disponible.</p>
+            {% endif %}
+            <div class="fb-page" data-href="https://www.facebook.com/Sococodami/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Sococodami/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Sococodami/">Sococodami</a></blockquote></div>
+        </div>
+    </main>
+{% endblock %}

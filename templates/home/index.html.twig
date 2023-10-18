@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/home.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+	<main>
+		<div class="container__hello">
+			{% if is_granted('ROLE_ADMIN') %}
+				<h2>Bienvenue, admin</h2>
+
+			{% elseif is_granted('ROLE_USER')%}
+
+				<h2>Bienvenue utilisateur</h2>
+
+			{% endif %}
+		</div>
+
+		<div class="container__img"></div>
+
+		<div class="container__afq">
+			<h2>
+				<a href='/adherer'>Comment adhérer ?</a>
+			</h2>
+			<h2>
+				<a href='/cotisation'>Payer sa cotisation</a>
+			</h2>
+			<h2>
+				<a href='/brochure'>Acheter nos brochures</a>
+			</h2>
+			<h2>
+				<a href='/osl'>Participer à une OSL</a>
+			</h2>
+		</div>
+
+
+		<div class="container__recent">
+			<h2>Messages récent</h2>
+
+			{% for comment in comments %}
+				<article class="recent">
+					<p>{{ comment.date|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
+						|
+						{{ comment.user }}
+						|
+						{{ comment.Title }}</p>
+				</article>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}

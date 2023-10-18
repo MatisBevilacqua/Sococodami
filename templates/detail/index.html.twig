@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Timbres
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/detail.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1 class="tamps__title">Timbre</h1>
+		<div class="filtered-stamps">
+			<div class="stamp-list">
+				{% for stamp in allStampsWithSameTitle %}
+					<div class="stamp">
+						<p>
+							{% if stamp.getDateDebutTirage() is not null %}
+								{{ stamp.getJourneTirage() }}
+								{{ stamp.getDateDebutTirage()|date('Y-m-d') }}
+							{% else %}
+								Date de début de tirage non spécifiée
+							{% endif %}
+							|
+							{% if stamp.getRemarque() is not empty %}
+								{{ stamp.getRemarque() }}
+							{% else %}
+								Aucune remarque disponible
+							{% endif %}
+						</p>
+
+						<div class="stamp__hidden">
+							<p>
+								{{stamp.getTitre() }}
+							</p>
+							<p>
+								{{stamp.getTxtFaciale() }}
+							</p>
+							<p>
+								{{stamp.getNumTirage() }}
+							</p>
+							<p>
+								{{stamp.getNumero() }}
+							</p>
+							<p>
+								{{stamp.getPresse() }}
+							</p>
+						</div>
+						{% for image in stampImages[stamp.getId()] %}
+							<img src="{{ asset('/images/stamps/' ~ image.getImage()) }}" alt="Image du timbre">
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div>
+			{{ form_start(commentForm) }}
+			<h7 class="forum__txt">Forum</h7>
+			{{ form_widget(commentForm) }}
+			<button class="button__form" type="submit">Envoyer</button>
+			{{ form_end(commentForm) }}
+		</div>
+
+		{% for comment in comments %}
+			<li class='forum__response'>
+				<p class='nbr__comment'>Commentaire numéro : {{ comment.id }}</p>
+				<p>{{ comment.date|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
+					|
+					{{ comment.user }}</p>
+				<p></p>
+				<p>{{ comment.Title }}</p>
+				<p>{{ comment.content }}</p>
+			</li>
+		{% endfor %}
+	</main>
+{% endblock %}

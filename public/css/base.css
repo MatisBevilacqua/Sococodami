@@ -50,7 +50,7 @@ header nav .nav-mobile .row-nav-mobile {
     min-width: 30px;
 }
 header nav .nav-mobile-active {
-    position: absolute;
+    position: fixed;
     width: 75vw;
     height: 100vh;
     background-color: #041026;
@@ -58,7 +58,8 @@ header nav .nav-mobile-active {
     transition: 0.3s;
     left: 0;
     color: white;
-    bottom: 0;
+    z-index: 2;
+    top: 0px;
 }
 header nav .nav-mobile-active .row-nav-mobile {
     width: 35px;
@@ -76,7 +77,8 @@ header nav .modal-nav-mobile-active {
     transition: 0.3s;
     left: 0;
     color: white;
-    bottom: 0;
+    z-index: 2;
+    top: 0px;
 }
 header nav .modal-nav-mobile-active ul {
     display: flex;

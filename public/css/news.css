@@ -6,6 +6,12 @@
     border: solid 1px black;
 }
 
+.news__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .item__list{
     display: flex;
     flex-direction: column;
@@ -29,3 +35,4 @@
 .fb-page{
     width: 100vw;
 }
+

@@ -676,7 +676,21 @@ class XmlFileLoader extends FileLoader
 
         return $parameters;
     }
-    
+
+    /**
+     * Validates a documents XML schema.
+     *
+     * @throws RuntimeException When extension references a non-existent XSD file
+     */
+    public function validateSchema(\DOMDocument $dom): bool
+    {
+        $schemaLocations = ['http://symfony.com/schema/dic/services' => str_replace('\\', '/', __DIR__.'/schema/dic/services/services-1.0.xsd')];
+
+        if ($element = $dom->documentElement->getAttributeNS('http://www.w3.org/2001/XMLSchema-instance', 'schemaLocation')) {
+            $items = preg_split('/\s+/', $element);
+            for ($i = 0, $nb = \count($items); $i < $nb; $i += 2) {
+                if (!$this->container->hasExtension($items[$i])) {
+                    continue;
                 }
 
                 if (($extension = $this->container->getExtension($items[$i])) && false !== $extension->getXsdValidationBasePath()) {
@@ -689,6 +703,7 @@ class XmlFileLoader extends FileLoader
 
                     $schemaLocations[$items[$i]] = $path;
                 }
+            }
         }
 
         $tmpfiles = [];

@@ -47,5 +47,5 @@ main{
     background-size: cover;
     background-attachment: fixed;
     height: 50vh;
-    background-image: url('https://thumbs.dreamstime.com/b/fond-de-timbre-poste-du-monde-18420119.jpg');
+    background-image: url('../images/bg.jpeg');
 }

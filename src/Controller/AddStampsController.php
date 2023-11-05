@@ -74,37 +74,32 @@ class AddStampsController extends AbstractController
                 foreach ($data as $row) {
                     $stamp = new Stamp();
 
-                    $stamp->setReferenceSococodami($row['reference_sococodami'] ?? null);
-                    $stamp->setReferenceSococodamiBis($row['reference_sococodami_bis'] ?? null);
-                    $stamp->setTxtFaciale($row['txt_faciale'] ?? null);
-                    $stamp->setNumTirage($row['num_tirage'] ?? null);
-                    $stamp->setNumero($row['numero'] ?? null);
-                    $stamp->setNumeroLongYvert($row['numero_long_yvert'] ?? null);
-                    $stamp->setPresse($row['presse'] ?? null);
+                    $stamp->setReferenceSococodami($row['reference_sococodami']);
+                    $stamp->setReferenceSococodamiBis($row['reference_sococodami_bis']);
+                    $stamp->setTxtFaciale($row['txt_faciale']);
+                    $stamp->setNumTirage($row['num_tirage']);
+                    $stamp->setNumero($row['numero']);
+                    $stamp->setNumeroLongYvert($row['numero_long_yvert']);
+                    $stamp->setPresse($row['presse']);
 
 
                     if (isset($row['existe_autoadhesifs'])) {
                         $stamp->setExisteAutoadhesifs($row['existe_autoadhesifs']);
                     }
 
-                    $stamp->setMemoCd($row['memo_cd'] ?? null);
-                    $stamp->setTirage($row['tirage'] ?? null);
-                    $stamp->setQtTpPresentation($row['qt_tp_presentation'] ?? null);
-                    $stamp->setTitre($row['titre'] ?? null);
-                    $stamp->setJourneTirage($row['journe_tirage'] ?? null);
-                    $stamp->setNumSuperieur($row['num_superieur'] ?? null);
-                    $stamp->setNumInferieur($row['num_inferieur'] ?? null);
-                    $stamp->setRemarque($row['remarque'] ?? null);
+                    $stamp->setMemoCd($row['memo_cd']);
+                    $stamp->setTirage($row['tirage']);
+                    $stamp->setQtTpPresentation($row['qt_tp_presentation']);
+                    $stamp->setTitre($row['titre']);
+                    $stamp->setJourneTirage($row['journe_tirage']);
+                    $stamp->setNumSuperieur($row['num_superieur']);
+                    $stamp->setNumInferieur($row['num_inferieur']);
+                    $stamp->setRemarque($row['remarque']);
+                    $stamp->setDateDebutTirage($row['date_debut_tirage']);
+                    $stamp->setDateFinTirage($row['date_fin_tirage']);
+                    $stamp->setDateParution($row['date_parution']);
+                    $stamp->setCommentaireTirage($row['commentaire_tirage']);
                     
-                    foreach (['date_debut_tirage', 'date_fin_tirage', 'date_parution'] as $dateField) {
-                        if (!empty($row[$dateField])) {
-                            $date = \DateTime::createFromFormat('d/m/Y', $row[$dateField]);
-                            if ($date !== false) {
-                                $stamp->$dateField($date);
-                            }
-                        }
-                    }
-
                     $entityManager->persist($stamp);
                 }    
 

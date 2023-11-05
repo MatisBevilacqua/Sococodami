@@ -99,6 +99,8 @@ class AddStampsController extends AbstractController
                     $stamp->setDateFinTirage($row['date_fin_tirage']);
                     $stamp->setDateParution($row['date_parution']);
                     $stamp->setCommentaireTirage($row['commentaire_tirage']);
+                    $stamp->setDateTirage($row['date_tirage']);
+                    $stamp->setCommentaire($row['commentaire']);
                     
                     $entityManager->persist($stamp);
                 }    

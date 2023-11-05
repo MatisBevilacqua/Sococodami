@@ -74,6 +74,12 @@ class Stamp
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $commentaire_tirage = null;
 
+    #[ORM\Column(length: 300000, nullable: true)]
+    private ?string $commentaire = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $date_tirage = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -315,6 +321,30 @@ class Stamp
     public function setCommentaireTirage(?string $commentaire_tirage): static
     {
         $this->commentaire_tirage = $commentaire_tirage;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?string $commentaire): static
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getDateTirage(): ?string
+    {
+        return $this->date_tirage;
+    }
+
+    public function setDateTirage(string $date_tirage): static
+    {
+        $this->date_tirage = $date_tirage;
 
         return $this;
     }

@@ -17,9 +17,9 @@ class StampImage
     private ?string $image = null;
 
     #[ORM\Column]
-    private ?int $stamp = null;
+    private ?string $stamp = null;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -36,12 +36,12 @@ class StampImage
         return $this;
     }
 
-    public function getStamp(): ?int
+    public function getStamp(): ?string
     {
         return $this->stamp;
     }
 
-    public function setStamp(int $stamp): static
+    public function setStamp(string $stamp): static
     {
         $this->stamp = $stamp;
 

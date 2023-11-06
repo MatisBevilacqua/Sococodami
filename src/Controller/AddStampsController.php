@@ -38,8 +38,8 @@ class AddStampsController extends AbstractController
                 );
                 $stampImage = new StampImage();
                 $stampImage->setImage($newFilename);
-                $stampId = $stamps->getId();
-                $stampImage->setStamp($stampId);
+                $stampNumero = $stamps->getNumero();
+                $stampImage->setStamp($stampNumero);
                 $entityManager->persist($stampImage);
                 $entityManager->flush($stampImage);
 
@@ -99,8 +99,8 @@ class AddStampsController extends AbstractController
                     $stamp->setDateFinTirage($row['date_fin_tirage']);
                     $stamp->setDateParution($row['date_parution']);
                     $stamp->setCommentaireTirage($row['commentaire_tirage']);
-                    $stamp->setDateTirage($row['date_tirage']);
-                    $stamp->setCommentaire($row['commentaire']);
+                    ///$stamp->setDateTirage($row['date_tirage']);
+                    //$stamp->setCommentaire($row['commentaire']);
                     
                     $entityManager->persist($stamp);
                 }    

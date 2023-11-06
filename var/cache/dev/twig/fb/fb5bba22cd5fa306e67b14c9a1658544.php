@@ -172,7 +172,7 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 \t\t\t\t\t\t\t<p>
 \t\t\t\t\t\t\t\t";
             // line 39
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stamp"], "getTxtFaciale", [], "method", false, false, false, 39), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["stamp"], "getCommentaireTirage", [], "method", false, false, false, 39), "html", null, true);
             echo "
 \t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t<p>
@@ -337,7 +337,7 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 \t\t\t\t\t\t\t\t{{stamp.getTitre() }}
 \t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t<p>
-\t\t\t\t\t\t\t\t{{stamp.getTxtFaciale() }}
+\t\t\t\t\t\t\t\t{{stamp.getCommentaireTirage() }}
 \t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t<p>
 \t\t\t\t\t\t\t\t{{stamp.getNumTirage() }}

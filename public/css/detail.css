@@ -61,10 +61,11 @@ input{
 button{
     width: 20vw;
     height: 30px;
+    min-width: 70vw;
 }
 
 input, textarea{
-    width: 20vw;
+    min-width: 70vw;
 }
 
 .forum__txt{
@@ -86,6 +87,38 @@ input, textarea{
     gap: 20px;
 }
 
+.reply__response{
+    width: 90vw;
+    font-size: 18px;
+    background-color: #000092;
+    margin: 5vw;
+    color: white;
+    padding: 5vh 2vw 5vh 2vw;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
 .nbr__comment{
     align-self: flex-end;
+}
+
+.reply{
+    background-color: aliceblue;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.gallery__img{
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    margin: 5vh 0 0 0;
 }

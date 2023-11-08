@@ -56,6 +56,16 @@
 			</div>
 		</div>
 
+		<div class="gallery">
+			{% for comment in comments %}
+				<img class="gallery__img" src="{{ asset('/images/stamps/' ~ comment.getImage()) }}" alt="Image du timbre">
+			{% endfor %}
+
+			{% for reply in reply %}
+				<img class="gallery__img" src="{{ asset('/images/stamps/' ~ reply.getImage()) }}" alt="Image du timbre">
+			{% endfor %}
+		</div>
+
 		<div>
 			{{ form_start(commentForm) }}
 			<h7 class="forum__txt">Forum</h7>
@@ -66,7 +76,7 @@
 
 		{% for comment in comments %}
 			<li class='forum__response'>
-				<p class='nbr__comment'>Commentaire numéro : {{ comment.id }}</p>
+				<a class='nbr__comment' href="{{ path('app_stamp_reply', {'id': comment.getId()}) }}">Repondre</a>
 				<p>{{ comment.date|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
 					|
 					{{ comment.user }}</p>
@@ -74,6 +84,20 @@
 				<p>{{ comment.Title }}</p>
 				<p>{{ comment.content }}</p>
 			</li>
+
+			{% for reply in reply %}
+				{% if reply.response == comment.id %}
+					<li class='reply__response'>
+						<p>Réponse :
+							{{ reply.getResponseDate()|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
+							|
+							{{ reply.getResponseUser() }}</p>
+						<p></p>
+						<p>{{ reply.getResponseContent() }}</p>
+					</li>
+				{% endif %}
+			{% endfor %}
+
 		{% endfor %}
 	</main>
 {% endblock %}

@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class ForumType extends AbstractType
 {
@@ -24,6 +26,12 @@ class ForumType extends AbstractType
                     'rows' => 5,
                     'placeholder' => 'Entrez votre messagge'
                 ]
+            ])
+
+            ->add('image', FileType::class, [
+                'label' => 'Image (JPEG, PNG)',
+                'mapped' => false,
+                'required' => false, 
             ]);
     }
 

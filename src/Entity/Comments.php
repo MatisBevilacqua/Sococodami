@@ -26,8 +26,12 @@ class Comments
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column]
-    private ?int $comments_id = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $comments_num = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
 
     public function getId(): ?int
     {
@@ -82,14 +86,26 @@ class Comments
         return $this;
     }
 
-    public function getCommentsId(): ?int
+    public function getCommentsNum(): ?string
     {
-        return $this->comments_id;
+        return $this->comments_num;
     }
 
-    public function setCommentsId(int $comments_id): static
+    public function setCommentsNum(?string $comments_num): static
     {
-        $this->comments_id = $comments_id;
+        $this->comments_num = $comments_num;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use App\Entity\Comments; 
-use App\Entity\Reply; 
 use App\Form\ForumType; 
-use App\Form\ReplyType; 
+use App\Entity\Reply;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class DetailController extends AbstractController
 {
@@ -31,6 +32,7 @@ class DetailController extends AbstractController
         $stampTitle = $stamp->getTitre();
         $stampRef = $stamp->getReferenceSococodami();
         $stampBis = $stamp->getReferenceSococodamiBis();
+        $stampNumero = $stamp->getNumero();
 
         $allStampsWithSameTitles = $stampRepository->findBy([
             'titre' => $stampTitle,
@@ -52,20 +54,41 @@ class DetailController extends AbstractController
             $user = $this->getUser();
             $comment->setUser($user->getUsername());
             $comment->setDate(new \DateTime());
-            $comment->setCommentsId($id);
+            $comment->setCommentsNum($stampNumero);
+
+            $uploadedFile = $commentForm->get('image')->getData();
+
+            if ($uploadedFile) {
+                $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
+
+                $uploadedFile->move(
+                    $this->getParameter('app.upload_directory_stamps'),
+                    $newFilename
+                );
+
+                $comment->setImage($newFilename);
+            } else {
+                $comment->setImage(null);
+            }
 
             $entityManager->persist($comment);
             $entityManager->flush();
+            
         }
 
         $commentRepository = $entityManager->getRepository(Comments::class);
-        $comments = $commentRepository->findBy(['comments_id' => $id]);
+        $comments = $commentRepository->findBy(['comments_num' => $stampNumero]);
 
+
+        $replyRepository = $entityManager->getRepository(Reply::class);
+        $reply = $replyRepository->findAll();
+        
         return $this->render('detail/index.html.twig', [
             'allStampsWithSameTitle' => $allStampsWithSameTitles,
             'stampImages' => $stampImages,
             'commentForm' => $commentForm->createView(),
-            'comments' => $comments
+            'comments' => $comments,
+            'reply' => $reply
         ]);
     }
 }

@@ -26,6 +26,9 @@ class Reply
     #[ORM\Column(length: 255)]
     private ?string $response_user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Reply
     public function setResponseUser(string $response_user): static
     {
         $this->response_user = $response_user;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -219,59 +219,130 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
         echo "\t\t\t</div>
 \t\t</div>
 
-\t\t<div>
+\t\t<div class=\"gallery\">
 \t\t\t";
         // line 60
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 60, $this->source); })()), 'form_start');
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new RuntimeError('Variable "comments" does not exist.', 60, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
+            // line 61
+            echo "\t\t\t\t<img class=\"gallery__img\" src=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/images/stamps/" . twig_get_attribute($this->env, $this->source, $context["comment"], "getImage", [], "method", false, false, false, 61))), "html", null, true);
+            echo "\" alt=\"Image du timbre\">
+\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 63
+        echo "
+\t\t\t";
+        // line 64
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($context["reply"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["reply"]) {
+            // line 65
+            echo "\t\t\t\t<img class=\"gallery__img\" src=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("/images/stamps/" . twig_get_attribute($this->env, $this->source, $context["reply"], "getImage", [], "method", false, false, false, 65))), "html", null, true);
+            echo "\" alt=\"Image du timbre\">
+\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reply'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 67
+        echo "\t\t</div>
+
+\t\t<div>
+\t\t\t";
+        // line 70
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 70, $this->source); })()), 'form_start');
         echo "
 \t\t\t<h7 class=\"forum__txt\">Forum</h7>
 \t\t\t";
-        // line 62
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 62, $this->source); })()), 'widget');
+        // line 72
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 72, $this->source); })()), 'widget');
         echo "
 \t\t\t<button class=\"button__form\" type=\"submit\">Envoyer</button>
 \t\t\t";
-        // line 64
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 64, $this->source); })()), 'form_end');
+        // line 74
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["commentForm"]) || array_key_exists("commentForm", $context) ? $context["commentForm"] : (function () { throw new RuntimeError('Variable "commentForm" does not exist.', 74, $this->source); })()), 'form_end');
         echo "
 \t\t</div>
 
 \t\t";
-        // line 67
+        // line 77
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new RuntimeError('Variable "comments" does not exist.', 67, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new RuntimeError('Variable "comments" does not exist.', 77, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
-            // line 68
+            // line 78
             echo "\t\t\t<li class='forum__response'>
-\t\t\t\t<p class='nbr__comment'>Commentaire numéro : ";
-            // line 69
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 69), "html", null, true);
-            echo "</p>
+\t\t\t\t<a class='nbr__comment' href=\"";
+            // line 79
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_stamp_reply", ["id" => twig_get_attribute($this->env, $this->source, $context["comment"], "getId", [], "method", false, false, false, 79)]), "html", null, true);
+            echo "\">Repondre</a>
 \t\t\t\t<p>";
-            // line 70
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_date_modify_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "date", [], "any", false, false, false, 70), "Y-m-d H:i:s"), "+2 hours"), "Y-m-d H:i:s"), "html", null, true);
+            // line 80
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_date_modify_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "date", [], "any", false, false, false, 80), "Y-m-d H:i:s"), "+2 hours"), "Y-m-d H:i:s"), "html", null, true);
             echo "
 \t\t\t\t\t|
 \t\t\t\t\t";
-            // line 72
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "user", [], "any", false, false, false, 72), "html", null, true);
+            // line 82
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "user", [], "any", false, false, false, 82), "html", null, true);
             echo "</p>
 \t\t\t\t<p></p>
 \t\t\t\t<p>";
-            // line 74
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "Title", [], "any", false, false, false, 74), "html", null, true);
+            // line 84
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "Title", [], "any", false, false, false, 84), "html", null, true);
             echo "</p>
 \t\t\t\t<p>";
-            // line 75
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "content", [], "any", false, false, false, 75), "html", null, true);
+            // line 85
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "content", [], "any", false, false, false, 85), "html", null, true);
             echo "</p>
 \t\t\t</li>
+
+\t\t\t";
+            // line 88
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable($context["reply"]);
+            foreach ($context['_seq'] as $context["_key"] => $context["reply"]) {
+                // line 89
+                echo "\t\t\t\t";
+                if ((twig_get_attribute($this->env, $this->source, $context["reply"], "response", [], "any", false, false, false, 89) == twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 89))) {
+                    // line 90
+                    echo "\t\t\t\t\t<li class='reply__response'>
+\t\t\t\t\t\t<p>Réponse :
+\t\t\t\t\t\t\t";
+                    // line 92
+                    echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_date_modify_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reply"], "getResponseDate", [], "method", false, false, false, 92), "Y-m-d H:i:s"), "+2 hours"), "Y-m-d H:i:s"), "html", null, true);
+                    echo "
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t";
+                    // line 94
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reply"], "getResponseUser", [], "method", false, false, false, 94), "html", null, true);
+                    echo "</p>
+\t\t\t\t\t\t<p></p>
+\t\t\t\t\t\t<p>";
+                    // line 96
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reply"], "getResponseContent", [], "method", false, false, false, 96), "html", null, true);
+                    echo "</p>
+\t\t\t\t\t</li>
+\t\t\t\t";
+                }
+                // line 99
+                echo "\t\t\t";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reply'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 100
+            echo "
 \t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 78
+        // line 102
         echo "\t</main>
 ";
         
@@ -294,7 +365,7 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 
     public function getDebugInfo()
     {
-        return array (  275 => 78,  266 => 75,  262 => 74,  257 => 72,  252 => 70,  248 => 69,  245 => 68,  241 => 67,  235 => 64,  230 => 62,  225 => 60,  219 => 56,  212 => 54,  203 => 52,  199 => 51,  193 => 48,  187 => 45,  181 => 42,  175 => 39,  169 => 36,  163 => 32,  159 => 30,  153 => 28,  151 => 27,  148 => 26,  144 => 24,  139 => 22,  134 => 21,  132 => 20,  128 => 18,  124 => 17,  118 => 13,  108 => 12,  96 => 9,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  346 => 102,  339 => 100,  333 => 99,  327 => 96,  322 => 94,  317 => 92,  313 => 90,  310 => 89,  306 => 88,  300 => 85,  296 => 84,  291 => 82,  286 => 80,  282 => 79,  279 => 78,  275 => 77,  269 => 74,  264 => 72,  259 => 70,  254 => 67,  245 => 65,  241 => 64,  238 => 63,  229 => 61,  225 => 60,  219 => 56,  212 => 54,  203 => 52,  199 => 51,  193 => 48,  187 => 45,  181 => 42,  175 => 39,  169 => 36,  163 => 32,  159 => 30,  153 => 28,  151 => 27,  148 => 26,  144 => 24,  139 => 22,  134 => 21,  132 => 20,  128 => 18,  124 => 17,  118 => 13,  108 => 12,  96 => 9,  91 => 8,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -357,6 +428,16 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 \t\t\t</div>
 \t\t</div>
 
+\t\t<div class=\"gallery\">
+\t\t\t{% for comment in comments %}
+\t\t\t\t<img class=\"gallery__img\" src=\"{{ asset('/images/stamps/' ~ comment.getImage()) }}\" alt=\"Image du timbre\">
+\t\t\t{% endfor %}
+
+\t\t\t{% for reply in reply %}
+\t\t\t\t<img class=\"gallery__img\" src=\"{{ asset('/images/stamps/' ~ reply.getImage()) }}\" alt=\"Image du timbre\">
+\t\t\t{% endfor %}
+\t\t</div>
+
 \t\t<div>
 \t\t\t{{ form_start(commentForm) }}
 \t\t\t<h7 class=\"forum__txt\">Forum</h7>
@@ -367,7 +448,7 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 
 \t\t{% for comment in comments %}
 \t\t\t<li class='forum__response'>
-\t\t\t\t<p class='nbr__comment'>Commentaire numéro : {{ comment.id }}</p>
+\t\t\t\t<a class='nbr__comment' href=\"{{ path('app_stamp_reply', {'id': comment.getId()}) }}\">Repondre</a>
 \t\t\t\t<p>{{ comment.date|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
 \t\t\t\t\t|
 \t\t\t\t\t{{ comment.user }}</p>
@@ -375,6 +456,20 @@ class __TwigTemplate_af50609468cd977ac1d60272dba7119c extends Template
 \t\t\t\t<p>{{ comment.Title }}</p>
 \t\t\t\t<p>{{ comment.content }}</p>
 \t\t\t</li>
+
+\t\t\t{% for reply in reply %}
+\t\t\t\t{% if reply.response == comment.id %}
+\t\t\t\t\t<li class='reply__response'>
+\t\t\t\t\t\t<p>Réponse :
+\t\t\t\t\t\t\t{{ reply.getResponseDate()|date('Y-m-d H:i:s')|date_modify('+2 hours')|date('Y-m-d H:i:s') }}
+\t\t\t\t\t\t\t|
+\t\t\t\t\t\t\t{{ reply.getResponseUser() }}</p>
+\t\t\t\t\t\t<p></p>
+\t\t\t\t\t\t<p>{{ reply.getResponseContent() }}</p>
+\t\t\t\t\t</li>
+\t\t\t\t{% endif %}
+\t\t\t{% endfor %}
+
 \t\t{% endfor %}
 \t</main>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Réponse
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/detail.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1 class="tamps__title">Réponse</h1>
+        <p>Réponse à : {{ replyContent.content }}</p>
+
+		<div>
+			{{ form_start(replyForm) }}
+			{{ form_widget(replyForm) }}
+			<button class="button__form" type="submit">Envoyer</button>
+			{{ form_end(replyForm) }}
+		</div>
+	</main>
+{% endblock %}

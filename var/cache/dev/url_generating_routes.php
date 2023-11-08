@@ -26,6 +26,7 @@ return [
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'app_news' => [[], ['_controller' => 'App\\Controller\\NewsController::index'], [], [['text', '/news']], [], [], []],
     'app_osl' => [[], ['_controller' => 'App\\Controller\\OslController::index'], [], [['text', '/osl']], [], [], []],
+    'app_stamp_reply' => [['id'], ['_controller' => 'App\\Controller\\ReplyController::index'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/stamps/comment']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'app_stamps' => [[], ['_controller' => 'App\\Controller\\StampsController::index'], [], [['text', '/stamps']], [], [], []],
